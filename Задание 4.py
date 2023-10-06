@@ -1,15 +1,30 @@
+import math
+
+
+def calculate_square_root(number):
+    try:
+        if number < 0:
+            raise ValueError("Отрицательное число не имеет квадратного корня")
+        result = math.sqrt(number)
+        return result
+    except ValueError as ve:
+        print(f"Ошибка: {ve}")
+        return None
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
+        return None
+    finally:
+        print("Завершение операции")
+
+
 try:
-    # Код, который может вызвать исключение
-    num1 = int(input("Введите первое число: "))
-    num2 = int(input("Введите второе число: "))
-    result = num1 / num2
-    print(f"Результат деления: {result}")
-except ZeroDivisionError:
-    # Обработка исключения, если деление на ноль
-    print("Ошибка: Деление на ноль!")
-except ValueError:
-    # Обработка исключения, если введены нечисловые значения
-    print("Ошибка: Введены некорректные значения!")
+    num = float(input("Введите число для вычисления квадратного корня: "))
+    result = calculate_square_root(num)
+    if result is not None:
+        print(f"Квадратный корень: {result:.2f}")
+except KeyboardInterrupt:
+    print("\nПрограмма завершена пользователем")
+except Exception as e:
+    print(f"Произошла ошибка: {e}")
 finally:
-    # Блок finally выполняется всегда, независимо от исключений
-    print("Блок finally: Завершение программы")
+    print("Завершение программы")
